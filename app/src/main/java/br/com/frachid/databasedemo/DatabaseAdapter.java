@@ -41,6 +41,35 @@ public class DatabaseAdapter {
         return stringBuffer.toString();
     }
 
+    public String getData(String name) {
+        String columns[] = {DatabaseHelper.KEY_NAME, DatabaseHelper.KEY_EMAIL};
+        String selectionArgs[] = {name};
+        Cursor cursor = db.query(DatabaseHelper.TABLE_NAME, columns, DatabaseHelper.KEY_NAME + "=?", selectionArgs, null, null, null, null);
+        StringBuffer buffer = new StringBuffer();
+        while(cursor.moveToNext()){
+            int index1 = cursor.getColumnIndex(DatabaseHelper.KEY_NAME);
+            int index2 = cursor.getColumnIndex(DatabaseHelper.KEY_EMAIL);
+            String personName = cursor.getString(index1);
+            String personEmail = cursor.getString(index2);
+            buffer.append(personName + " " + personEmail + "\n");
+        }
+        return buffer.toString();
+    }
+
+    public int updateEmail(String name, String email){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DatabaseHelper.KEY_EMAIL, email);
+        String whereArgs[] = {name};
+        int count = db.update(DatabaseHelper.TABLE_NAME, contentValues, DatabaseHelper.KEY_NAME + "=?", whereArgs);
+        return count;
+    }
+
+    public int deleteUser(String name){
+        String whereArgs[] = {name};
+        int count = db.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper.KEY_NAME + "=?", whereArgs);
+        return count;
+    }
+
     private static class DatabaseHelper extends SQLiteOpenHelper {
 
         private static final String DATABASE_NAME = "mydb.db";

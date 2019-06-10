@@ -36,4 +36,32 @@
         android:onClick="viewUsers"
         android:text="View records"/>
 
+    <EditText
+        android:id="@+id/searchUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:hint="Search by name"/>
+
+    <Button
+        android:id="@+id/getUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="getUser"
+        android:text="Get user"/>
+
+    <Button
+        android:id="@+id/updateUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="updateUser"
+        android:text="Update user"/>
+
+    <Button
+        android:id="@+id/deleteUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="deleteUser"
+        android:text="Delete user" />
+
 </LinearLayout>
