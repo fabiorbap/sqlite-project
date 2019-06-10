@@ -10,7 +10,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     DatabaseAdapter databaseAdapter;
-    EditText name, email;
+    EditText name, email, searchUser;
 
 
     @Override
@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
+        searchUser = findViewById(R.id.searchUser);
         setupDatabaseHelper();
     }
 
@@ -39,5 +40,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void viewUsers(View view) {
         Toast.makeText(this, databaseAdapter.getAllData(), Toast.LENGTH_LONG).show();
+    }
+
+    public void getUser(View view) {
+        Toast.makeText(this, databaseAdapter.getData(searchUser.getText().toString().trim()), Toast.LENGTH_SHORT).show();
+    }
+
+    public void updateUser(View view) {
+        databaseAdapter.updateEmail("Joao", "jason@gmail.com");
+    }
+
+    public void deleteUser(View view) {
+        databaseAdapter.deleteUser("Maria");
     }
 }
