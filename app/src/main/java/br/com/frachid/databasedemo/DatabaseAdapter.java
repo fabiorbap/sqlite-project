@@ -72,10 +72,10 @@ public class DatabaseAdapter {
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
 
-        private static final String DATABASE_NAME = "mydb.db";
+        private static final String DATABASE_NAME = "mycustomdb.db";
         private static final String TABLE_NAME = "contacts";
         private static final int DATABASE_VERSION = 12;
-        private static final String KEY_ROW_ID = "_id";
+        private static final String KEY_ROW_ID = "id";
         private static final String KEY_NAME = "name";
         private static final String KEY_EMAIL = "email";
         private static final String CREATE_TABLE = "create table " + TABLE_NAME + " (" + KEY_ROW_ID + " integer primary key autoincrement, " + KEY_NAME + " text," + KEY_EMAIL + " text)";
